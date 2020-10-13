@@ -95,6 +95,9 @@ namespace AbpCMS.Web
             {
                 options.Conventions.AuthorizePage("/HostDashboard", AbpCMSPermissions.Dashboard.Host);
                 options.Conventions.AuthorizePage("/TenantDashboard", AbpCMSPermissions.Dashboard.Tenant);
+                options.Conventions.AuthorizePage("/Cagegories/Index", AbpCMSPermissions.Cagegories.Default);
+                options.Conventions.AuthorizePage("/Companies/Index", AbpCMSPermissions.Companies.Default);
+                options.Conventions.AuthorizePage("/CompanyDatas/Index", AbpCMSPermissions.CompanyDatas.Default);
             });
         }
 
@@ -113,7 +116,7 @@ namespace AbpCMS.Web
                 {
                     options.Authority = configuration["AuthServer:Authority"];
                     options.RequireHttpsMetadata = false;
-                    options.Audience  = "AbpCMS";
+                    options.Audience = "AbpCMS";
                 });
         }
 

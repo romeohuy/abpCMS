@@ -1,0 +1,31 @@
+@page
+@using Microsoft.AspNetCore.Mvc.Localization
+@using AbpCMS.Localization
+@using Volo.Abp.AspNetCore.Mvc.UI.Bootstrap.TagHelpers.Modal
+@using AbpCMS.Web.Pages.Companies
+@using AbpCMS.Companies;
+@using System.Globalization
+@inject IHtmlLocalizer<AbpCMSResource> L
+@model CreateModalModel
+@{
+    Layout = null;
+}
+<form data-ajaxForm="true" asp-page="/Companies/CreateModal" autocomplete="off">
+    <abp-modal>
+        <abp-modal-header title="@L["NewCompany"].Value"></abp-modal-header>
+
+        <abp-modal-body>
+            
+            <abp-input asp-for="Company.Code"/>
+
+            <abp-input asp-for="Company.Name"/>
+
+            <abp-input asp-for="Company.IsActive"/>
+
+                        <abp-select asp-for="Company.CagegoryId" asp-items="Model.CagegoryLookupList" label="@L["Cagegory"].Value"/>
+
+        </abp-modal-body>
+
+        <abp-modal-footer buttons="@(AbpModalButtons.Cancel|AbpModalButtons.Save)"></abp-modal-footer>
+    </abp-modal>
+</form>

@@ -1,3 +1,6 @@
+using AbpCMS.CompanyDatas;
+using AbpCMS.Companies;
+using AbpCMS.Cagegories;
 using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp.AuditLogging.EntityFrameworkCore;
 using Volo.Abp.BackgroundJobs.EntityFrameworkCore;
@@ -45,6 +48,9 @@ namespace AbpCMS.EntityFrameworkCore
                 /* Remove "includeAllEntities: true" to create
                  * default repositories only for aggregate roots */
                 options.AddDefaultRepositories(includeAllEntities: true);
+                options.AddRepository<Cagegory, EfCoreCagegoryRepository>();
+                options.AddRepository<Company, EfCoreCompanyRepository>();
+                options.AddRepository<CompanyData, EfCoreCompanyDataRepository>();
             });
 
             Configure<AbpDbContextOptions>(options =>

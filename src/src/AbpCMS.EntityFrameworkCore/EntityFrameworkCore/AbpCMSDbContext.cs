@@ -1,3 +1,6 @@
+using AbpCMS.CompanyDatas;
+using AbpCMS.Companies;
+using AbpCMS.Cagegories;
 using Microsoft.EntityFrameworkCore;
 using AbpCMS.Users;
 using Volo.Abp.Data;
@@ -20,6 +23,9 @@ namespace AbpCMS.EntityFrameworkCore
     [ConnectionStringName("Default")]
     public class AbpCMSDbContext : AbpDbContext<AbpCMSDbContext>
     {
+        public DbSet<CompanyData> CompanyDatas { get; set; }
+        public DbSet<Company> Companies { get; set; }
+        public DbSet<Cagegory> Cagegories { get; set; }
         public DbSet<AppUser> Users { get; set; }
 
         /* Add DbSet properties for your Aggregate Roots / Entities here.

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.DependencyInjection;
@@ -92,6 +93,39 @@ namespace AbpCMS.Web.Menus
 
             //Administration->Settings
             administration.SetSubItemOrder(SettingManagementMenuNames.GroupName, 7);
+
+            if (await context.IsGrantedAsync(AbpCMSPermissions.Cagegories.Default))
+            {
+                context.Menu.AddItem(
+                    new ApplicationMenuItem(
+                        "AbpCMS.Cagegories",
+                        l["Menu:Cagegories"],
+                        url: "/Cagegories",
+                        icon: "fa fa-file-alt")
+                );
+            }
+
+            if (await context.IsGrantedAsync(AbpCMSPermissions.Companies.Default))
+            {
+                context.Menu.AddItem(
+                    new ApplicationMenuItem(
+                        "AbpCMS.Companies",
+                        l["Menu:Companies"],
+                        url: "/Companies",
+                        icon: "fa fa-file-alt")
+                );
+            }
+
+            if (await context.IsGrantedAsync(AbpCMSPermissions.CompanyDatas.Default))
+            {
+                context.Menu.AddItem(
+                    new ApplicationMenuItem(
+                        "AbpCMS.CompanyDatas",
+                        l["Menu:CompanyDatas"],
+                        url: "/CompanyDatas",
+                        icon: "fa fa-file-alt")
+                );
+            }
         }
     }
 }

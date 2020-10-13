@@ -1,0 +1,150 @@
+@page
+@using Microsoft.AspNetCore.Authorization
+@using Volo.Abp.AspNetCore.Mvc.UI.Layout
+@using AbpCMS.Permissions
+@using AbpCMS.Web.Pages.CompanyDatas
+@using AbpCMS.Web.Menus
+@using Microsoft.AspNetCore.Mvc.Localization
+@using AbpCMS.Localization
+@inject IHtmlLocalizer<AbpCMSResource> L
+@inject IAuthorizationService Authorization
+@model IndexModel
+@inject IPageLayout PageLayout
+@{
+    PageLayout.Content.Title = L["CompanyDatas"].Value;
+    PageLayout.Content.MenuItemName = AbpCMSMenus.CompanyDatas;
+}
+
+@section scripts
+{
+    <abp-script src="/Pages/CompanyDatas/index.js" />
+}
+
+@section content_toolbar {
+    @if (await Authorization.IsGrantedAsync(AbpCMSPermissions.CompanyDatas.Create))
+    {
+        <abp-button id="NewCompanyDataButton"
+                    text="@L["NewCompanyData"].Value"
+                    icon="plus"
+                    button-type="Primary" />
+    }
+}
+
+<abp-card>
+    <abp-card-body>
+		<abp-row class="mb-3">
+            <abp-column size-md="_12">
+                <form id="SearchForm" autocomplete="off">
+                    <div class="input-group">
+                        <input class="form-control" id="FilterText" placeholder="@L["Search"]"/>
+                        <div class="input-group-append">
+                            <abp-button button-type="Primary" type="submit" icon="search"/>
+                        </div>
+                    </div>
+                </form>
+            </abp-column>
+            <abp-column size-md="_12" class="mt-3">
+                <a href="javascript:;" id="AdvancedFilterSectionToggler">@L["SeeAdvancedFilters"]</a>
+            </abp-column>
+        </abp-row>
+        <abp-row id="AdvancedFilterSection" style="display: none;">
+                <abp-column size="_3">
+                    <abp-input asp-for="PercentFilter" label="@L["Percent"].Value" />
+                </abp-column>
+                <abp-column size="_3">
+                    <abp-input asp-for="CNFilter" label="@L["CN"].Value" />
+                </abp-column>
+                <abp-column size="_3">
+                    <abp-input asp-for="TNFilter" label="@L["TN"].Value" />
+                </abp-column>
+                <abp-column size="_3">
+                    <abp-input asp-for="GiaFilter" label="@L["Gia"].Value" />
+                </abp-column>
+                <abp-column size="_3">
+                    <abp-input asp-for="GiaTheoPhanTramFilter" label="@L["GiaTheoPhanTram"].Value" />
+                </abp-column>
+                <abp-column size="_3">
+                    <abp-input asp-for="BienDongGiaFilter" label="@L["BienDongGia"].Value" />
+                </abp-column>
+                <abp-column size="_3">
+                    <abp-input asp-for="BienDongCaoThapFilter" label="@L["BienDongCaoThap"].Value" />
+                </abp-column>
+                <abp-column size="_3">
+                    <abp-input asp-for="LuuYFilter" label="@L["LuuY"].Value" />
+                </abp-column>
+                <abp-column size="_3">
+                    <abp-input asp-for="KLFilter" label="@L["KL"].Value" />
+                </abp-column>
+                <abp-column size="_3">
+                    <abp-input asp-for="KLPhanTramFilter" label="@L["KLPhanTram"].Value" />
+                </abp-column>
+                <abp-column size="_3">
+                    <abp-input asp-for="NNFilter" label="@L["NN"].Value" />
+                </abp-column>
+                <abp-column size="_3">
+                    <abp-input asp-for="GiaTriNNFilter" label="@L["GiaTriNN"].Value" />
+                </abp-column>
+                <abp-column size="_3">
+                    <abp-input asp-for="NNMuaCongBanFilter" label="@L["NNMuaCongBan"].Value" />
+                </abp-column>
+                <abp-column size="_3">
+                    <abp-input asp-for="NNMuaTruBanFilter" label="@L["NNMuaTruBan"].Value" />
+                </abp-column>
+                <abp-column size="_3">
+                    <abp-input asp-for="SucManhFilter" label="@L["SucManh"].Value" />
+                </abp-column>
+                <abp-column size="_3">
+                    <abp-input asp-for="DiemGiaFilter" label="@L["DiemGia"].Value" />
+                </abp-column>
+                <abp-column size="_3">
+                    <abp-input asp-for="LinkThamKhaoFilter" label="@L["LinkThamKhao"].Value" />
+                </abp-column>
+                <abp-column size="_3">
+                    <abp-input asp-for="CreatedDateFilterMin" label="@L["MinCreatedDate"].Value" type="date"/>
+                </abp-column>
+                <abp-column size="_3">
+                    <abp-input asp-for="CreatedDateFilterMax" label="@L["MaxCreatedDate"].Value" type="date"/>
+                </abp-column>
+                <abp-column size="_3">
+                    <label for="Company_Filter_Name">@L["Company"]</label>
+                    <div class="input-group mb-3">
+                        <input hidden id="CompanyIdFilter" />
+                        <input type="text" id="Company_Filter_Name" class="form-control" disabled>
+                        <div class="input-group-append">
+                            <abp-button button-type="Info" id="CompanyFilterLookupOpenButton" class="text-light">@L["Pick"]</abp-button>
+                            <abp-button button-type="Danger" class="lookupCleanButton"><i class="fa fa-times"></i></abp-button>
+                        </div>
+                    </div>
+                </abp-column>
+
+        </abp-row>
+        <abp-table striped-rows="true" id="CompanyDatasTable">
+            <thead>
+				<tr>
+					<th>@L["Actions"]</th>
+					<th>@L["Percent"]</th>
+					<th>@L["CN"]</th>
+					<th>@L["TN"]</th>
+					<th>@L["Gia"]</th>
+					<th>@L["GiaTheoPhanTram"]</th>
+					<th>@L["BienDongGia"]</th>
+					<th>@L["BienDongCaoThap"]</th>
+					<th>@L["LuuY"]</th>
+					<th>@L["KL"]</th>
+					<th>@L["KLPhanTram"]</th>
+					<th>@L["NN"]</th>
+					<th>@L["GiaTriNN"]</th>
+					<th>@L["NNMuaCongBan"]</th>
+					<th>@L["NNMuaTruBan"]</th>
+					<th>@L["SucManh"]</th>
+					<th>@L["DiemGia"]</th>
+					<th>@L["LinkThamKhao"]</th>
+					<th>@L["CreatedDate"]</th>
+
+					<th>@L["Company"]</th>
+
+				</tr>
+            </thead>
+        </abp-table>
+    </abp-card-body>
+</abp-card>

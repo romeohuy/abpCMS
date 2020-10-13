@@ -1,0 +1,22 @@
+@page
+@using Microsoft.AspNetCore.Mvc.Localization
+@using AbpCMS.Localization
+@inject IHtmlLocalizer<AbpCMSResource> L
+@model AbpCMS.Web.Pages.Shared.LookupModal
+@{
+    Layout = null;
+}
+<div id="NavigationPropertyLookupTableModal">
+    <abp-modal size="Large">
+        <abp-modal-header title="@(L["Pick"].Value)"></abp-modal-header>
+        <input hidden id="CurrentLookupId" value="@Model.CurrentId" />
+        <input hidden id="CurrentLookupDisplayName" value="@Model.CurrentDisplayName" />
+        <abp-modal-body>
+            <abp-table striped-rows="true" id="LookupTable">
+            </abp-table>
+        </abp-modal-body>
+        <div class="modal-footer">
+            <button id="CancelButton" type="button" class="btn btn-secondary" data-dismiss="modal">@L["Cancel"]</button>
+        </div>
+    </abp-modal>
+</div>

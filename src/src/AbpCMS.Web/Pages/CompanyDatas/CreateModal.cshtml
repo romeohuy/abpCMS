@@ -1,0 +1,68 @@
+@page
+@using Microsoft.AspNetCore.Mvc.Localization
+@using AbpCMS.Localization
+@using Volo.Abp.AspNetCore.Mvc.UI.Bootstrap.TagHelpers.Modal
+@using AbpCMS.Web.Pages.CompanyDatas
+@using AbpCMS.CompanyDatas;
+@using System.Globalization
+@inject IHtmlLocalizer<AbpCMSResource> L
+@model CreateModalModel
+@{
+    Layout = null;
+}
+<form data-ajaxForm="true" asp-page="/CompanyDatas/CreateModal" autocomplete="off">
+    <abp-modal>
+        <abp-modal-header title="@L["NewCompanyData"].Value"></abp-modal-header>
+
+        <abp-modal-body>
+            
+            <abp-input asp-for="CompanyData.Percent"/>
+
+            <abp-input asp-for="CompanyData.CN"/>
+
+            <abp-input asp-for="CompanyData.TN"/>
+
+            <abp-input asp-for="CompanyData.Gia"/>
+
+            <abp-input asp-for="CompanyData.GiaTheoPhanTram"/>
+
+            <abp-input asp-for="CompanyData.BienDongGia"/>
+
+            <abp-input asp-for="CompanyData.BienDongCaoThap"/>
+
+            <abp-input asp-for="CompanyData.LuuY"/>
+
+            <abp-input asp-for="CompanyData.KL"/>
+
+            <abp-input asp-for="CompanyData.KLPhanTram"/>
+
+            <abp-input asp-for="CompanyData.NN"/>
+
+            <abp-input asp-for="CompanyData.GiaTriNN"/>
+
+            <abp-input asp-for="CompanyData.NNMuaCongBan"/>
+
+            <abp-input asp-for="CompanyData.NNMuaTruBan"/>
+
+            <abp-input asp-for="CompanyData.SucManh"/>
+
+            <abp-input asp-for="CompanyData.DiemGia"/>
+
+            <abp-input asp-for="CompanyData.LinkThamKhao"/>
+
+            <abp-input asp-for="CompanyData.CreatedDate" value="@DateTime.Now.ToString("yyyy-MM-dd")" type="date"/>
+
+                        <label for="Company_Name">@L["Company"]</label>
+            <div class="input-group mb-3">
+                <input hidden value="@Model.CompanyData.CompanyId" id="Company_Id" name="CompanyData.CompanyId" />
+                <input type="text" id="Company_Name" class="form-control" disabled>
+                <div class="input-group-append">
+                    <abp-button button-type="Info" id="CompanyLookupOpenButton" class="text-light">@L["Pick"]</abp-button>
+                    <abp-button button-type="Danger" class="lookupCleanButton"><i class="fa fa-times"></i></abp-button>
+                </div>
+            </div>
+        </abp-modal-body>
+
+        <abp-modal-footer buttons="@(AbpModalButtons.Cancel|AbpModalButtons.Save)"></abp-modal-footer>
+    </abp-modal>
+</form>
