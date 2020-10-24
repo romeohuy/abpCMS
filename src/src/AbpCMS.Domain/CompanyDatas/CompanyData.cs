@@ -11,57 +11,13 @@ namespace AbpCMS.CompanyDatas
     public class CompanyData : FullAuditedAggregateRoot<Guid>
     {
         [CanBeNull]
-        public virtual string Percent { get; set; }
+        public virtual string Title { get; set; }
 
         [CanBeNull]
-        public virtual string CN { get; set; }
+        public virtual string ShortDescription { get; set; }
 
         [CanBeNull]
-        public virtual string TN { get; set; }
-
-        [CanBeNull]
-        public virtual string Gia { get; set; }
-
-        [CanBeNull]
-        public virtual string GiaTheoPhanTram { get; set; }
-
-        [CanBeNull]
-        public virtual string BienDongGia { get; set; }
-
-        [CanBeNull]
-        public virtual string BienDongCaoThap { get; set; }
-
-        [CanBeNull]
-        public virtual string LuuY { get; set; }
-
-        [CanBeNull]
-        public virtual string KL { get; set; }
-
-        [CanBeNull]
-        public virtual string KLPhanTram { get; set; }
-
-        [CanBeNull]
-        public virtual string NN { get; set; }
-
-        [CanBeNull]
-        public virtual string GiaTriNN { get; set; }
-
-        [CanBeNull]
-        public virtual string NNMuaCongBan { get; set; }
-
-        [CanBeNull]
-        public virtual string NNMuaTruBan { get; set; }
-
-        [CanBeNull]
-        public virtual string SucManh { get; set; }
-
-        [CanBeNull]
-        public virtual string DiemGia { get; set; }
-
-        [CanBeNull]
-        public virtual string LinkThamKhao { get; set; }
-
-        public virtual DateTime CreatedDate { get; set; }
+        public virtual string Content { get; set; }
         public Guid? CompanyId { get; set; }
 
         public CompanyData()
@@ -69,27 +25,12 @@ namespace AbpCMS.CompanyDatas
 
         }
 
-        public CompanyData(Guid id, string percent, string cN, string tN, string gia, string giaTheoPhanTram, string bienDongGia, string bienDongCaoThap, string luuY, string kL, string kLPhanTram, string nN, string giaTriNN, string nNMuaCongBan, string nNMuaTruBan, string sucManh, string diemGia, string linkThamKhao, DateTime createdDate)
+        public CompanyData(Guid id, string title, string shortDescription, string content)
         {
             Id = id;
-            Percent = percent;
-            CN = cN;
-            TN = tN;
-            Gia = gia;
-            GiaTheoPhanTram = giaTheoPhanTram;
-            BienDongGia = bienDongGia;
-            BienDongCaoThap = bienDongCaoThap;
-            LuuY = luuY;
-            KL = kL;
-            KLPhanTram = kLPhanTram;
-            NN = nN;
-            GiaTriNN = giaTriNN;
-            NNMuaCongBan = nNMuaCongBan;
-            NNMuaTruBan = nNMuaTruBan;
-            SucManh = sucManh;
-            DiemGia = diemGia;
-            LinkThamKhao = linkThamKhao;
-            CreatedDate = createdDate;
+            Title = title;
+            ShortDescription = shortDescription;
+            Content = content;
         }
     }
 }

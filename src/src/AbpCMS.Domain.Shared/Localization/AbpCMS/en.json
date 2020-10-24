@@ -56,6 +56,9 @@
     "MinCreatedDate": "Min Created Date",
     "MaxCreatedDate": "Max Created Date",
     "Menu:CompanyDatas": "Company Datas",
-    "KLPhanTram": "K L Phan Tram"
+    "KLPhanTram": "K L Phan Tram",
+    "Title": "Title",
+    "ShortDescription": "Short Description",
+    "Content": "Content"
   }
 }

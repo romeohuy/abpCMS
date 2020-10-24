@@ -4,15 +4,17 @@ using AbpCMS.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Volo.Abp.EntityFrameworkCore;
 
 namespace AbpCMS.Migrations
 {
     [DbContext(typeof(AbpCMSMigrationsDbContext))]
-    partial class AbpCMSMigrationsDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201024054503_Updated_CompanyData_20102412443761")]
+    partial class Updated_CompanyData_20102412443761
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

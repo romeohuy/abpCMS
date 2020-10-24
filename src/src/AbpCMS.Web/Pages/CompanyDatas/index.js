@@ -48,25 +48,9 @@ $(function () {
 	var getFilter = function() {
         return {
             filterText: $("#FilterText").val(),	
-            percent: $("#PercentFilter").val(),
-			cN: $("#CNFilter").val(),
-			tN: $("#TNFilter").val(),
-			gia: $("#GiaFilter").val(),
-			giaTheoPhanTram: $("#GiaTheoPhanTramFilter").val(),
-			bienDongGia: $("#BienDongGiaFilter").val(),
-			bienDongCaoThap: $("#BienDongCaoThapFilter").val(),
-			luuY: $("#LuuYFilter").val(),
-			kL: $("#KLFilter").val(),
-			kLPhanTram: $("#KLPhanTramFilter").val(),
-			nN: $("#NNFilter").val(),
-			giaTriNN: $("#GiaTriNNFilter").val(),
-			nNMuaCongBan: $("#NNMuaCongBanFilter").val(),
-			nNMuaTruBan: $("#NNMuaTruBanFilter").val(),
-			sucManh: $("#SucManhFilter").val(),
-			diemGia: $("#DiemGiaFilter").val(),
-			linkThamKhao: $("#LinkThamKhaoFilter").val(),
-			createdDateMin: $("#CreatedDateFilterMin").data().datepicker.getFormattedDate('yyyy-mm-dd'),
-			createdDateMax: $("#CreatedDateFilterMax").data().datepicker.getFormattedDate('yyyy-mm-dd'),
+            title: $("#TitleFilter").val(),
+			shortDescription: $("#ShortDescriptionFilter").val(),
+			content: $("#ContentFilter").val(),
 			companyId: $("#CompanyIdFilter").val()
         };
     };
@@ -110,34 +94,9 @@ $(function () {
                         ]
                 }
             },
-			{ data: "companyData.percent" }
-,			{ data: "companyData.cN" }
-,			{ data: "companyData.tN" }
-,			{ data: "companyData.gia" }
-,			{ data: "companyData.giaTheoPhanTram" }
-,			{ data: "companyData.bienDongGia" }
-,			{ data: "companyData.bienDongCaoThap" }
-,			{ data: "companyData.luuY" }
-,			{ data: "companyData.kL" }
-,			{ data: "companyData.kLPhanTram" }
-,			{ data: "companyData.nN" }
-,			{ data: "companyData.giaTriNN" }
-,			{ data: "companyData.nNMuaCongBan" }
-,			{ data: "companyData.nNMuaTruBan" }
-,			{ data: "companyData.sucManh" }
-,			{ data: "companyData.diemGia" }
-,			{ data: "companyData.linkThamKhao" }
-,            {
-                data: "companyData.createdDate",
-                render: function (createdDate) {
-                    if (!createdDate) {
-                        return "";
-                    }
-                    
-					var date = Date.parse(createdDate);
-                    return (new Date(date)).toLocaleDateString(abp.localization.currentCulture.name);
-                }
-            }
+			{ data: "companyData.title" }
+,			{ data: "companyData.shortDescription" }
+,			{ data: "companyData.content" }
 
             ,
             {

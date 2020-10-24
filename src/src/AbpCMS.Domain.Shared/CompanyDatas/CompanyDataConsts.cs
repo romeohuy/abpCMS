@@ -2,7 +2,7 @@ namespace AbpCMS.CompanyDatas
 {
     public static class CompanyDataConsts
     {
-        private const string DefaultSorting = "{0}Percent asc";
+        private const string DefaultSorting = "{0}Title asc";
 
         public static string GetDefaultSorting(bool withEntityName)
         {

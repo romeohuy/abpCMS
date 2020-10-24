@@ -10,49 +10,31 @@
 @{
     Layout = null;
 }
+<script>
+    tinymce.init({
+        selector: '#@Html.IdFor(m=>m.CompanyData.Content)',
+        plugins: 'advlist autolink lists link image charmap print preview hr anchor pagebreak',
+        toolbar_mode: 'floating',
+    });
+</script>
 <form data-ajaxForm="true" asp-page="/CompanyDatas/CreateModal" autocomplete="off">
-    <abp-modal>
+    <abp-modal size="ExtraLarge">
         <abp-modal-header title="@L["NewCompanyData"].Value"></abp-modal-header>
 
         <abp-modal-body>
             
-            <abp-input asp-for="CompanyData.Percent"/>
+            <abp-input asp-for="CompanyData.Title"/>
 
-            <abp-input asp-for="CompanyData.CN"/>
+            <abp-input asp-for="CompanyData.ShortDescription"/>
 
-            <abp-input asp-for="CompanyData.TN"/>
+            <div class="form-group">
+                <label for="CompanyData_Content">Content</label>
+                <textarea id="CompanyData_Content" name="CompanyData.Content" placeholder="" class="form-control ">
+                    @Model.CompanyData.Content
+                </textarea>
+            </div>
 
-            <abp-input asp-for="CompanyData.Gia"/>
-
-            <abp-input asp-for="CompanyData.GiaTheoPhanTram"/>
-
-            <abp-input asp-for="CompanyData.BienDongGia"/>
-
-            <abp-input asp-for="CompanyData.BienDongCaoThap"/>
-
-            <abp-input asp-for="CompanyData.LuuY"/>
-
-            <abp-input asp-for="CompanyData.KL"/>
-
-            <abp-input asp-for="CompanyData.KLPhanTram"/>
-
-            <abp-input asp-for="CompanyData.NN"/>
-
-            <abp-input asp-for="CompanyData.GiaTriNN"/>
-
-            <abp-input asp-for="CompanyData.NNMuaCongBan"/>
-
-            <abp-input asp-for="CompanyData.NNMuaTruBan"/>
-
-            <abp-input asp-for="CompanyData.SucManh"/>
-
-            <abp-input asp-for="CompanyData.DiemGia"/>
-
-            <abp-input asp-for="CompanyData.LinkThamKhao"/>
-
-            <abp-input asp-for="CompanyData.CreatedDate" value="@DateTime.Now.ToString("yyyy-MM-dd")" type="date"/>
-
-                        <label for="Company_Name">@L["Company"]</label>
+            <label for="Company_Name">@L["Company"]</label>
             <div class="input-group mb-3">
                 <input hidden value="@Model.CompanyData.CompanyId" id="Company_Id" name="CompanyData.CompanyId" />
                 <input type="text" id="Company_Name" class="form-control" disabled>

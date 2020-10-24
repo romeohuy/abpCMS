@@ -14,26 +14,9 @@ namespace AbpCMS.Web.Pages.CompanyDatas
 {
     public class IndexModel : AbpPageModel
     {
-        public string PercentFilter { get; set; }
-        public string CNFilter { get; set; }
-        public string TNFilter { get; set; }
-        public string GiaFilter { get; set; }
-        public string GiaTheoPhanTramFilter { get; set; }
-        public string BienDongGiaFilter { get; set; }
-        public string BienDongCaoThapFilter { get; set; }
-        public string LuuYFilter { get; set; }
-        public string KLFilter { get; set; }
-        public string KLPhanTramFilter { get; set; }
-        public string NNFilter { get; set; }
-        public string GiaTriNNFilter { get; set; }
-        public string NNMuaCongBanFilter { get; set; }
-        public string NNMuaTruBanFilter { get; set; }
-        public string SucManhFilter { get; set; }
-        public string DiemGiaFilter { get; set; }
-        public string LinkThamKhaoFilter { get; set; }
-        public DateTime? CreatedDateFilterMin { get; set; }
-
-        public DateTime? CreatedDateFilterMax { get; set; }
+        public string TitleFilter { get; set; }
+        public string ShortDescriptionFilter { get; set; }
+        public string ContentFilter { get; set; }
 
         private readonly ICompanyDataAppService _companyDataAppService;
 

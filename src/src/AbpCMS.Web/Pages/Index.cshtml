@@ -4,6 +4,7 @@
 @model AbpCMS.Web.Pages.IndexModel
 @using Microsoft.AspNetCore.Mvc.Localization
 @using AbpCMS.Localization
+
 @inject IHtmlLocalizer<AbpCMSResource> L
 @{
     ViewBag.PageTitle = "Home";
@@ -14,11 +15,16 @@
     PageLayout.Content.BreadCrumb.Add(L["Menu:Home"].Value);
     PageLayout.Content.MenuItemName = AbpCMSMenus.Home;
 }
-<abp-card>
-    <abp-card-header>@L["Welcome"]</abp-card-header>
-    <abp-card-body>
-        <p>@L["LongWelcomeMessage"]</p>
-        <hr />
-        <p class="text-right"><a href="https://abp.io?ref=tmpl" target="_blank">abp.io</a></p>
-    </abp-card-body>
-</abp-card>
+
+@foreach (var companyData in Model.CompaniesData)
+{
+    <abp-card>
+        <abp-card-header><h4>@companyData.Company.Name (@companyData.Company.Code): @companyData.CompanyData.Title</h4></abp-card-header>
+        <abp-card-body>
+            <div>@Html.Raw(companyData.CompanyData.ShortDescription)</div>
+            <hr />
+            <div>@Html.Raw(companyData.CompanyData.Content)</div>
+        </abp-card-body>
+    </abp-card>
+}
+

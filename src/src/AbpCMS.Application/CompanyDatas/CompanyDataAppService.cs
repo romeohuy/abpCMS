@@ -29,8 +29,8 @@ namespace AbpCMS.CompanyDatas
 
         public virtual async Task<PagedResultDto<CompanyDataWithNavigationPropertiesDto>> GetListAsync(GetCompanyDatasInput input)
         {
-            var totalCount = await _companyDataRepository.GetCountAsync(input.FilterText, input.Percent, input.CN, input.TN, input.Gia, input.GiaTheoPhanTram, input.BienDongGia, input.BienDongCaoThap, input.LuuY, input.KL, input.KLPhanTram, input.NN, input.GiaTriNN, input.NNMuaCongBan, input.NNMuaTruBan, input.SucManh, input.DiemGia, input.LinkThamKhao, input.CreatedDateMin, input.CreatedDateMax, input.CompanyId);
-            var items = await _companyDataRepository.GetListWithNavigationPropertiesAsync(input.FilterText, input.Percent, input.CN, input.TN, input.Gia, input.GiaTheoPhanTram, input.BienDongGia, input.BienDongCaoThap, input.LuuY, input.KL, input.KLPhanTram, input.NN, input.GiaTriNN, input.NNMuaCongBan, input.NNMuaTruBan, input.SucManh, input.DiemGia, input.LinkThamKhao, input.CreatedDateMin, input.CreatedDateMax, input.CompanyId, input.Sorting, input.MaxResultCount, input.SkipCount);
+            var totalCount = await _companyDataRepository.GetCountAsync(input.FilterText, input.Title, input.ShortDescription, input.Content, input.CompanyId);
+            var items = await _companyDataRepository.GetListWithNavigationPropertiesAsync(input.FilterText, input.Title, input.ShortDescription, input.Content, input.CompanyId, input.Sorting, input.MaxResultCount, input.SkipCount);
 
             return new PagedResultDto<CompanyDataWithNavigationPropertiesDto>
             {
